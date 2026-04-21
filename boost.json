@@ -1,13 +1,9 @@
 {
-    "agents": [
-        "copilot"
-    ],
+    "agents": ["copilot"],
     "guidelines": true,
-    "mcp": true,
+    "mcp": false,
     "nightwatch_mcp": false,
-    "packages": [
-        "spatie/laravel-medialibrary"
-    ],
+    "packages": ["spatie/laravel-medialibrary"],
     "sail": false,
     "skills": [
         "laravel-best-practices",
