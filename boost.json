@@ -1,9 +1,18 @@
 {
     "agents": [
-        "gemini"
+        "copilot"
     ],
-    "editors": [
-        "gemini"
+    "guidelines": true,
+    "mcp": true,
+    "nightwatch_mcp": false,
+    "packages": [
+        "spatie/laravel-medialibrary"
     ],
-    "guidelines": []
+    "sail": false,
+    "skills": [
+        "laravel-best-practices",
+        "inertia-vue-development",
+        "tailwindcss-development",
+        "medialibrary-development"
+    ]
 }
