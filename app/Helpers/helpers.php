@@ -11,15 +11,6 @@ if (! function_exists('settings')) {
     }
 }
 
-if (! function_exists('settings')) {
-    function settings(): object
-    {
-        return cache()->remember('settings', 24 * 60, function () {
-            return new \App\Http\Resources\SettingsResource(\App\Models\Setting::firstOrFail());
-        });
-    }
-}
-
 if (! function_exists('make_reference_id')) {
     function make_reference_id($prefix, $number): string
     {
@@ -33,9 +24,10 @@ if (! function_exists('get_start_end_date')) {
         $start_date = null;
         $end_date = null;
 
-        if (request()->input('date_range')) {
+        if (is_array($date_range) && isset($date_range[0]) && ! empty($date_range[0])) {
             $start_date = Carbon::parse($date_range[0])->format('Y-m-d');
-            if (! (request()->input('date_range')[1] == 'Invalid date')) {
+
+            if (isset($date_range[1]) && $date_range[1] !== 'Invalid date' && ! empty($date_range[1])) {
                 $end_date = Carbon::parse($date_range[1])->format('Y-m-d');
             } else {
                 $end_date = Carbon::parse(today())->format('Y-m-d');
@@ -73,5 +65,31 @@ if (! function_exists('format_currency')) {
         }
 
         return $formatted_value;
+    }
+}
+
+if (! function_exists('format_dob_with_age')) {
+    function format_dob_with_age($dateOfBirth, string $fallback = '—'): string
+    {
+        if (! $dateOfBirth) {
+            return $fallback;
+        }
+
+        try {
+            $dob = Carbon::parse($dateOfBirth);
+        } catch (Throwable $exception) {
+            return $fallback;
+        }
+
+        $formattedDate = $dob->format('d/m/Y');
+        $today = Carbon::today();
+
+        if ($dob->greaterThan($today)) {
+            return $formattedDate;
+        }
+
+        $ageInYears = round($dob->diffInMonths($today) / 12, 1);
+
+        return $formattedDate.' ('.number_format($ageInYears, 1, '.', '').' years)';
     }
 }

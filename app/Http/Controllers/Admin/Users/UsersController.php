@@ -22,7 +22,7 @@ class UsersController extends Controller
 
         $per_page = request()->input('per_page') ?? 10;
 
-        $users = User::with(['roles', 'media', 'branch'])
+        $users = User::with(['roles', 'media'])
             ->when(request()->has('search'), function ($query) {
                 return $query
                     ->where('id', '!=', Auth::id())
@@ -48,11 +48,9 @@ class UsersController extends Controller
         abort_if(Gate::denies('access_user_management'), 403);
 
         $roles = Role::where('name', '!=', 'Super Admin')->where('name', '!=', 'Developer')->get();
-        $branches = Branch::get();
 
         return Inertia::render('Admin/Users/Create', [
             'roles' => $roles,
-            'branches' => $branches,
         ]);
     }
 

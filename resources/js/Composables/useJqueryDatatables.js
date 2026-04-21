@@ -1,5 +1,5 @@
-import { usePage } from "@inertiajs/vue3";
-import moment from "moment";
+import { usePage } from '@inertiajs/vue3';
+import { format } from 'date-fns';
 
 export function useJqueryDatatables(title, columns) {
     const options = {
@@ -43,14 +43,14 @@ export function useJqueryDatatables(title, columns) {
                         columns: [
                             {
                                 alignment: 'center',
-                                text: [
-                                    { text: 'Generated on:: ' + moment().format('MMM DD, YYYY hh:mm A') },
-                                ]
+                                text: [{ text: `Generated on:: ${format(new Date(), 'MMM dd, yyyy hh:mm a')}` }],
                             },
-                        ]
-                    }
-                    doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
-                }
+                        ],
+                    };
+                    doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1)
+                        .join('*')
+                        .split('');
+                },
             },
             {
                 extend: 'print',
@@ -94,5 +94,5 @@ export function useJqueryDatatables(title, columns) {
         ],
     };
 
-    return { options }
+    return { options };
 }

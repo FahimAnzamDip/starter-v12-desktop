@@ -129,7 +129,7 @@ const submit = () => {
 </template>
 
 <style scoped>
-.branch-select ::v-deep .vs__dropdown-toggle {
+.branch-select :deep(.vs__dropdown-toggle) {
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
     padding: 0.4rem 1rem !important;

@@ -10,8 +10,8 @@ import Breadcrumb from '@/Components/Breadcrumb.vue';
 import { useAlert } from '@/Composables/useAlert.js';
 import { useHelpers } from '@/Composables/useHelpers.js';
 import { Head, Link, router } from '@inertiajs/vue3';
+import { format } from 'date-fns';
 import { debounce, pickBy } from 'lodash';
-import moment from 'moment-timezone';
 import { reactive, ref, watch } from 'vue';
 
 // Helpers composable
@@ -45,8 +45,8 @@ watch(
                 ...pickBy(params),
                 date_range: params.date_range
                     ? [
-                          moment(params.date_range[0]).format('YYYY-MM-DD'),
-                          moment(params.date_range[1]).format('YYYY-MM-DD'),
+                          format(new Date(params.date_range[0]), 'yyyy-MM-dd'),
+                          format(new Date(params.date_range[1]), 'yyyy-MM-dd'),
                       ]
                     : '',
             },
