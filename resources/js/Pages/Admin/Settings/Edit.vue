@@ -9,7 +9,8 @@ export default {
 <script setup>
 import Breadcrumb from '@/Components/Breadcrumb.vue';
 import { useAlert } from '@/Composables/useAlert.js';
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import { useUploadImage } from '@/Composables/useUploadImage.js';
+import { Head, Link, useForm, usePage } from '@inertiajs/vue3';
 import { Tooltip } from 'bootstrap';
 import { onMounted, ref } from 'vue';
 
@@ -48,9 +49,46 @@ const form = useForm({
     date_format: props.setting.date_format,
     time_format: props.setting.time_format,
     time_zone: props.setting.time_zone,
-    logo: '',
-    favicon: '',
+    logo: [],
+    favicon: [],
 });
+
+let savedLogo = ref([]);
+let savedFavicon = ref([]);
+
+let logoPaths = ref(usePage().props.settings.logo ? [usePage().props.settings.logo] : []);
+if (logoPaths.value.length > 0 && logoPaths.value[0]) {
+    let filename = logoPaths.value[0].substring(logoPaths.value[0].lastIndexOf('/') + 1);
+    // Remove query params if any
+    filename = filename.split('?')[0];
+    form.logo.push(filename);
+}
+
+let faviconPaths = ref(usePage().props.settings.favicon ? [usePage().props.settings.favicon] : []);
+if (faviconPaths.value.length > 0 && faviconPaths.value[0]) {
+    let filename = faviconPaths.value[0].substring(faviconPaths.value[0].lastIndexOf('/') + 1);
+    // Remove query params if any
+    filename = filename.split('?')[0];
+    form.favicon.push(filename);
+}
+
+const {
+    FilePond: FilePondLogo,
+    pond: logoPond,
+    handleFilePondLoad: handleLogoLoad,
+    handleFilePondRevert: handleLogoRevert,
+    handleFilePondInit: handleLogoInit,
+    handleFilePondRemove: handleLogoRemove,
+} = useUploadImage(form, savedLogo, logoPaths, 'logo');
+
+const {
+    FilePond: FilePondFavicon,
+    pond: faviconPond,
+    handleFilePondLoad: handleFaviconLoad,
+    handleFilePondRevert: handleFaviconRevert,
+    handleFilePondInit: handleFaviconInit,
+    handleFilePondRemove: handleFaviconRemove,
+} = useUploadImage(form, savedFavicon, faviconPaths, 'favicon');
 
 // Update settings
 const updateSettings = () => {
@@ -110,17 +148,32 @@ const resetForm = () => {
                             <div class="col-md-6">
                                 <div class="mb-4">
                                     <label>Logo</label>
-                                    <img
-                                        style="min-width: 65px; max-height: 100px"
-                                        :src="$page.props.settings.logo"
-                                        alt="Logo"
-                                        class="d-block mb-2"
-                                    />
-                                    <input
-                                        type="file"
-                                        class="form-control"
-                                        :class="{ 'border-2 border-danger': form.errors.logo }"
-                                        @input="form.logo = $event.target.files[0]"
+                                    <file-pond-logo
+                                        name="logo"
+                                        ref="logoPond"
+                                        label-idle="Drag & Drop your logo or <span class='filepond--label-action' tabindex='0'>Browse</span>"
+                                        :allow-multiple="false"
+                                        accepted-file-types="image/jpeg, image/png, image/jpg"
+                                        maxFileSize="1MB"
+                                        maxParallelUploads="1"
+                                        :server="{
+                                            url: '',
+                                            timeout: 7000,
+                                            process: {
+                                                url: route('filepond.upload'),
+                                                method: 'POST',
+                                                onload: handleLogoLoad,
+                                            },
+                                            revert: handleLogoRevert,
+                                            remove: handleLogoRemove,
+                                            headers: {
+                                                'X-CSRF-TOKEN': $page.props.csrf_token,
+                                            },
+                                        }"
+                                        :credits="''"
+                                        :files="savedLogo"
+                                        @init="handleLogoInit"
+                                        filePosterMaxHeight="100"
                                     />
                                     <span v-show="form.errors.logo" class="text-danger">{{ form.errors.logo }}</span>
                                 </div>
@@ -128,17 +181,32 @@ const resetForm = () => {
                             <div class="col-md-6">
                                 <div class="mb-4">
                                     <label>Favicon</label>
-                                    <img
-                                        style="min-width: 65px; max-height: 100px"
-                                        :src="$page.props.settings.favicon"
-                                        alt="Favicon"
-                                        class="d-block mb-2"
-                                    />
-                                    <input
-                                        type="file"
-                                        class="form-control"
-                                        :class="{ 'border-2 border-danger': form.errors.favicon }"
-                                        @input="form.favicon = $event.target.files[0]"
+                                    <file-pond-favicon
+                                        name="favicon"
+                                        ref="faviconPond"
+                                        label-idle="Drag & Drop your favicon or <span class='filepond--label-action' tabindex='0'>Browse</span>"
+                                        :allow-multiple="false"
+                                        accepted-file-types="image/jpeg, image/png, image/jpg, image/x-icon"
+                                        maxFileSize="1MB"
+                                        maxParallelUploads="1"
+                                        :server="{
+                                            url: '',
+                                            timeout: 7000,
+                                            process: {
+                                                url: route('filepond.upload'),
+                                                method: 'POST',
+                                                onload: handleFaviconLoad,
+                                            },
+                                            revert: handleFaviconRevert,
+                                            remove: handleFaviconRemove,
+                                            headers: {
+                                                'X-CSRF-TOKEN': $page.props.csrf_token,
+                                            },
+                                        }"
+                                        :credits="''"
+                                        :files="savedFavicon"
+                                        @init="handleFaviconInit"
+                                        filePosterMaxHeight="100"
                                     />
                                     <span v-show="form.errors.favicon" class="text-danger">{{
                                         form.errors.favicon

@@ -11,8 +11,9 @@ onMounted(() => {
     };
 
     const sidebar = document.getElementById('sidebarMenu');
-    const content = document.getElementsByClassName('content')[0];
+    const content = document.querySelector('.content');
     const sidebarToggle = document.querySelector('#sidebar-toggle');
+    const sidebarToggleIcon = sidebarToggle?.querySelector('i');
 
     if (sidebar && document.body.clientWidth < breakpoints.lg) {
         sidebar.addEventListener('shown.bs.collapse', function () {
@@ -22,13 +23,13 @@ onMounted(() => {
             document.querySelector('body').style.position = 'relative';
         });
     }
-    
-    if (sidebar) {
+
+    if (sidebar && content && sidebarToggle && sidebarToggleIcon) {
         if (localStorage.getItem('sidebar') === 'contracted') {
             sidebar.classList.add('notransition');
             content.classList.add('notransition');
-            sidebarToggle.querySelector('i').classList.remove('ri-menu-fold-fill');
-            sidebarToggle.querySelector('i').classList.add('ri-menu-unfold-fill');
+            sidebarToggleIcon.classList.remove('ri-menu-fold-fill');
+            sidebarToggleIcon.classList.add('ri-menu-unfold-fill');
 
             sidebar.classList.add('contracted');
 
@@ -40,8 +41,8 @@ onMounted(() => {
             sidebar.classList.add('notransition');
             content.classList.add('notransition');
 
-            sidebarToggle.querySelector('i').classList.add('ri-menu-fold-fill');
-            sidebarToggle.querySelector('i').classList.remove('ri-menu-unfold-fill');
+            sidebarToggleIcon.classList.add('ri-menu-fold-fill');
+            sidebarToggleIcon.classList.remove('ri-menu-unfold-fill');
 
             sidebar.classList.remove('contracted');
 
@@ -54,13 +55,13 @@ onMounted(() => {
         sidebarToggle.addEventListener('click', function () {
             if (sidebar.classList.contains('contracted')) {
                 sidebar.classList.remove('contracted');
-                sidebarToggle.querySelector('i').classList.add('ri-menu-fold-fill');
-                sidebarToggle.querySelector('i').classList.remove('ri-menu-unfold-fill');
+                sidebarToggleIcon.classList.add('ri-menu-fold-fill');
+                sidebarToggleIcon.classList.remove('ri-menu-unfold-fill');
                 localStorage.removeItem('sidebar', 'contracted');
             } else {
                 sidebar.classList.add('contracted');
-                sidebarToggle.querySelector('i').classList.remove('ri-menu-fold-fill');
-                sidebarToggle.querySelector('i').classList.add('ri-menu-unfold-fill');
+                sidebarToggleIcon.classList.remove('ri-menu-fold-fill');
+                sidebarToggleIcon.classList.add('ri-menu-unfold-fill');
                 localStorage.setItem('sidebar', 'contracted');
             }
         });

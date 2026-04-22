@@ -1,12 +1,14 @@
 <?php
 
+use App\Http\Resources\SettingsResource;
+use App\Models\Setting;
 use Carbon\Carbon;
 
 if (! function_exists('settings')) {
     function settings(): object
     {
         return cache()->remember('settings', 24 * 60, function () {
-            return new \App\Http\Resources\SettingsResource(\App\Models\Setting::firstOrFail());
+            return (object) (new SettingsResource(Setting::firstOrFail()))->resolve();
         });
     }
 }

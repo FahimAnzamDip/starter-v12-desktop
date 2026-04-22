@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SettingsResource;
+use App\Http\Services\UploadService;
 use App\Models\Currency;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class SettingsController extends Controller
         ]);
     }
 
-    public function update(Request $request, Setting $setting)
+    public function update(Request $request, Setting $setting, UploadService $upload)
     {
         abort_if(Gate::denies('access_settings'), 403);
 
@@ -49,28 +50,12 @@ class SettingsController extends Controller
 
         $setting->update($request->except('logo', 'favicon'));
 
-        if ($request->hasFile('logo')) {
-            if ($setting->getFirstMedia('logo')) {
-                $setting->getFirstMedia('logo')->delete();
-            }
-
-            $uploaded_file = $request->file('logo');
-            $filename = uniqid().now()->timestamp.'.'.$uploaded_file->getClientOriginalExtension();
-
-            $setting->addMediaFromRequest('logo')->usingFileName($filename)
-                ->toMediaCollection('logo');
+        if ($request->input('logo')) {
+            $upload->uploadImage($setting, $request->input('logo'), 'logo');
         }
 
-        if ($request->hasFile('favicon')) {
-            if ($setting->getFirstMedia('favicon')) {
-                $setting->getFirstMedia('favicon')->delete();
-            }
-
-            $uploaded_file = $request->file('favicon');
-            $filename = uniqid().now()->timestamp.'.'.$uploaded_file->getClientOriginalExtension();
-
-            $setting->addMediaFromRequest('favicon')->usingFileName($filename)
-                ->toMediaCollection('favicon');
+        if ($request->input('favicon')) {
+            $upload->uploadImage($setting, $request->input('favicon'), 'favicon');
         }
 
         cache()->clear();
