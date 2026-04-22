@@ -1,8 +1,22 @@
 <script setup>
+import { isDarkTheme, toggleTheme } from '@/Composables/useTheme';
 import { Link } from '@inertiajs/vue3';
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
+
+const isDarkMode = ref(false);
+
+const syncThemeState = () => {
+    isDarkMode.value = isDarkTheme();
+};
+
+const handleThemeToggle = () => {
+    toggleTheme();
+    syncThemeState();
+};
 
 onMounted(() => {
+    syncThemeState();
+
     const breakpoints = {
         sm: 540,
         md: 720,
@@ -91,16 +105,24 @@ onMounted(() => {
 
 <template>
     <!-- Topbar Start -->
-    <nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark px-3 bg-white py-1 mb-4 shadow">
+    <nav class="navbar navbar-top navbar-expand navbar-dashboard px-3 bg-body py-1 mb-4 shadow">
         <div class="container-fluid px-0">
             <div class="d-md-flex d-block justify-content-between w-100" id="navbarSupportedContent">
                 <div class="d-flex align-items-center justify-content-end justify-content-lg-start">
                     <!-- Toggle Button -->
                     <button
                         id="sidebar-toggle"
-                        class="me-3 border-0 bg-white d-none d-lg-inline-block align-items-center justify-content-center"
+                        class="me-3 border-0 bg-transparent d-none d-lg-inline-block align-items-center justify-content-center"
                     >
                         <i class="ri-menu-fold-fill fs-3 text-secondary"></i>
+                    </button>
+                    <button
+                        type="button"
+                        class="me-3 border-0 bg-transparent d-inline-flex align-items-center justify-content-center text-secondary"
+                        :title="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'"
+                        @click="handleThemeToggle"
+                    >
+                        <i :class="isDarkMode ? 'ri-sun-line fs-4' : 'ri-moon-clear-line fs-4'"></i>
                     </button>
                     <!-- View Site Button -->
                     <!--                    <a href="#" target="_blank" class="btn btn-primary d-flex align-items-center">-->
@@ -117,7 +139,7 @@ onMounted(() => {
                         <li class="nav-item dropdown">
                             <!-- Add unread class for red icon -->
                             <a
-                                class="nav-link text-dark notification-bell dropdown-toggle position-relative"
+                                class="nav-link text-body notification-bell dropdown-toggle position-relative"
                                 data-unread-notifications="true"
                                 href="#"
                                 role="button"
@@ -186,8 +208,8 @@ onMounted(() => {
                                         alt="User Image"
                                         :src="$page.props.auth.user.avatar"
                                     />
-                                    <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                                        <span class="mb-0 font-small fw-bolder text-gray-900">{{
+                                    <div class="media-body ms-2 text-body align-items-center d-none d-lg-block">
+                                        <span class="mb-0 font-small fw-bolder text-body">{{
                                             $page.props.auth.user.name
                                         }}</span>
                                     </div>

@@ -1,12 +1,15 @@
 {
     "agents": [
-        "copilot"
+        "copilot",
+        "gemini",
+        "opencode"
     ],
     "guidelines": true,
     "mcp": true,
     "nightwatch_mcp": false,
     "packages": [
-        "spatie/laravel-medialibrary"
+        "spatie/laravel-medialibrary",
+        "barryvdh/laravel-debugbar"
     ],
     "sail": false,
     "skills": [
@@ -14,6 +17,7 @@
         "pest-testing",
         "inertia-vue-development",
         "tailwindcss-development",
-        "medialibrary-development"
+        "medialibrary-development",
+        "debug-using-debugbar"
     ]
 }

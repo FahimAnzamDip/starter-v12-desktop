@@ -42,7 +42,7 @@ const submit = () => {
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 d-flex align-items-center justify-content-center">
-                        <div class="bg-white shadow border-0 rounded border-light p-4 p-lg-4 w-100 fmxw-500">
+                        <div class="bg-body shadow border-0 rounded border-light p-4 p-lg-4 w-100 fmxw-500">
                             <!-- App Logo -->
                             <div class="d-flex justify-content-center align-items-center">
                                 <img width="100" class="py-2" src="/images/app-logo-dark.png" alt="App Logo" />

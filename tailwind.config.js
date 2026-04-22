@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
     mode: 'jit',
+    darkMode: 'class',
     prefix: 'tw-',
     content: ['./resources/**/*.blade.php', './resources/**/*.js', './resources/**/*.vue'],
     theme: {

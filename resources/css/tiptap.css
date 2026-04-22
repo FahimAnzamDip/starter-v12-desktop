@@ -103,7 +103,7 @@
 }
 
 .tiptap code {
-    background-color: #f8f9fa;
+    background-color: var(--app-surface-subtle);
     border-radius: 0.25rem;
     padding: 0.125rem 0.375rem;
     font-family: monospace;
@@ -129,7 +129,7 @@
 
 .tiptap blockquote {
     padding-left: 1rem;
-    border-left: 3px solid #d1d5db;
+    border-left: 3px solid var(--app-control-border);
     margin: 1rem 0;
     font-style: italic;
 }
@@ -195,7 +195,7 @@
 .tiptap table td,
 .tiptap table th {
     min-width: 1em;
-    border: 2px solid #ced4da;
+    border: 2px solid var(--app-control-border);
     padding: 3px 5px;
     vertical-align: top;
     box-sizing: border-box;

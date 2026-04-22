@@ -39,7 +39,7 @@ const submit = () => {
                     </p>
                     <div class="col-12 d-flex align-items-center justify-content-center">
                         <div
-                            class="signin-inner my-3 my-lg-0 bg-white shadow border-0 rounded p-4 p-lg-5 w-100 fmxw-500">
+                            class="signin-inner my-3 my-lg-0 bg-body shadow border-0 rounded p-4 p-lg-5 w-100 fmxw-500">
                             <div v-if="status" class="alert alert-success">
                                 {{ status }}
                             </div>

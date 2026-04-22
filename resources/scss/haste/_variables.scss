@@ -443,7 +443,9 @@ $component-hover-border-color: $gray-300 !default;
 
 $rounded-pill: 50rem !default;
 
-$box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !default;
+$box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06) !default;
 $box-shadow-sm: 0 2px 5px rgba(140, 152, 164, 0.2) !default;
 $box-shadow-lg: 0 1rem 3rem rgba($black, 0.175) !default;
 $box-shadow-inset: inset 0 1px 2px rgba($black, 0.0125) !default;
@@ -728,7 +730,9 @@ $btn-font-size-lg: $input-btn-font-size-lg !default;
 $btn-border-width: $input-btn-border-width !default;
 
 $btn-font-weight: $font-weight-bold !default;
-$btn-box-shadow: inset 0 1px 0 rgba($white, 0.15), 0 1px 1px rgba($black, 0.075) !default;
+$btn-box-shadow:
+    inset 0 1px 0 rgba($white, 0.15),
+    0 1px 1px rgba($black, 0.075) !default;
 $btn-focus-width: $input-btn-focus-width !default;
 $btn-focus-box-shadow: $input-btn-focus-box-shadow !default;
 $btn-disabled-opacity: 0.65 !default;
@@ -745,7 +749,10 @@ $btn-border-radius: $border-radius !default;
 $btn-border-radius-sm: $border-radius !default;
 $btn-border-radius-lg: $border-radius !default;
 
-$btn-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+$btn-transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
     box-shadow 0.15s ease-in-out !default;
 
 $btn-close-width: 1em !default;
@@ -828,7 +835,9 @@ $input-height-xl: calc(
     #{$input-line-height * 1.5em} + #{$input-btn-padding-y-lg * 2} + #{$input-height-border}
 ) !default;
 
-$input-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !default;
+$input-transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out !default;
 
 // Custom forms
 
@@ -886,8 +895,11 @@ $form-check-padding-left: $form-check-input-width + 0.5em !default;
 $form-check-margin-bottom: 0.125rem !default;
 $form-check-label-color: null !default;
 $form-check-label-cursor: null !default;
-$form-check-transition: background-color 0.2s ease-in-out, background-position 0.2s ease-in-out,
-    border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out !default;
+$form-check-transition:
+    background-color 0.2s ease-in-out,
+    background-position 0.2s ease-in-out,
+    border-color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out !default;
 
 $form-check-input-active-filter: brightness(90%) !default;
 
@@ -995,11 +1007,15 @@ $form-range-thumb-bg: $component-active-bg !default;
 $form-range-thumb-border: 0 !default;
 $form-range-thumb-border-radius: 1rem !default;
 $form-range-thumb-box-shadow: 0 0.1rem 0.25rem rgba($black, 0.1) !default;
-$form-range-thumb-focus-box-shadow: 0 0 0 1px $body-bg, $input-focus-box-shadow !default;
+$form-range-thumb-focus-box-shadow:
+    0 0 0 1px $body-bg,
+    $input-focus-box-shadow !default;
 $form-range-thumb-focus-box-shadow-width: $input-focus-width !default; // For focus box shadow issue in Edge
 $form-range-thumb-active-bg: lighten($component-active-bg, 35%) !default;
 $form-range-thumb-disabled-bg: $gray-500 !default;
-$form-range-thumb-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+$form-range-thumb-transition:
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
     box-shadow 0.15s ease-in-out !default;
 
 $form-file-height: $input-height !default;
@@ -1102,7 +1118,10 @@ $nav-link-color: $gray-800 !default;
 $nav-link-hover-color: $dark !default;
 $nav-link-active-color: $gray-800 !default;
 $nav-link-shadow: none !default;
-$nav-link-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out !default;
+$nav-link-transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out !default;
 $nav-link-disabled-color: $gray-600 !default;
 
 $nav-tabs-border-color: $light !default;
@@ -1210,7 +1229,9 @@ $dropdown-border-width: $border-width !default;
 $dropdown-inner-border-radius: subtract($dropdown-border-radius, $dropdown-border-width) !default;
 $dropdown-divider-bg: $gray-200 !default;
 $dropdown-divider-margin-y: $spacer * 0.5 !default;
-$dropdown-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !default;
+$dropdown-box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05) !default;
 
 $dropdown-link-color: $gray-900 !default;
 $dropdown-link-hover-color: darken($gray-900, 5%) !default;

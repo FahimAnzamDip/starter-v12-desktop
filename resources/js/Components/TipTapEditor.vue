@@ -38,7 +38,7 @@ const props = defineProps({
 
 <style scoped>
 .tiptap-editor-wrapper {
-    background-color: #fff;
+    background-color: var(--app-surface-elevated);
 }
 
 .drag-handle-icon {
@@ -49,15 +49,15 @@ const props = defineProps({
     height: 1.5rem;
     border-radius: 0.25rem;
     cursor: grab;
-    color: #495057;
+    color: var(--bs-body-color);
     transition: all 0.2s;
     margin-left: 5px;
     margin-right: 5px;
 }
 
 .drag-handle-icon:hover {
-    background: #e9ecef;
-    color: #495057;
+    background: var(--bs-secondary-bg);
+    color: var(--bs-body-color);
 }
 
 :deep(.ProseMirror) {

@@ -1,11 +1,30 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="light">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title inertia>{{ config('app.name', 'Laravel') }}</title>
+
+    <script>
+        (function() {
+            const themeKey = 'theme';
+            const lightTheme = 'light';
+            const darkTheme = 'dark';
+
+            let theme = lightTheme;
+
+            try {
+                theme = localStorage.getItem(themeKey) === darkTheme ? darkTheme : lightTheme;
+            } catch {
+                theme = lightTheme;
+            }
+
+            document.documentElement.setAttribute('data-bs-theme', theme);
+            document.documentElement.classList.toggle('dark', theme === darkTheme);
+        })();
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

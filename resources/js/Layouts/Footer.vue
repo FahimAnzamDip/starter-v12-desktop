@@ -4,7 +4,7 @@ let year = new Date().getFullYear();
 
 <template>
     <!-- Footer Start -->
-    <footer class="py-2 border-top border-gray-300 px-3">
+    <footer class="py-2 border-top px-3">
         <div class="row">
             <div class="col-12 d-md-flex justify-content-between">
                 <div>

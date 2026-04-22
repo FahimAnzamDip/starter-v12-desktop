@@ -1,10 +1,10 @@
 <template>
-    <div v-if="editor" class="tiptap-toolbar bg-light d-flex align-items-center gap-1 p-2 border-bottom flex-wrap">
+    <div v-if="editor" class="tiptap-toolbar bg-body-secondary d-flex align-items-center gap-1 p-2 border-bottom flex-wrap">
         <!-- Undo -->
         <button
             @click="editor.chain().focus().undo().run()"
             :disabled="!editor.can().undo()"
-            class="btn btn-sm bg-gray-100 border-0"
+            class="btn btn-sm btn-light border-0"
             type="button"
             title="Undo"
         >
@@ -15,7 +15,7 @@
         <button
             @click="editor.chain().focus().redo().run()"
             :disabled="!editor.can().redo()"
-            class="btn btn-sm bg-gray-100 border-0"
+            class="btn btn-sm btn-light border-0"
             type="button"
             title="Redo"
         >
@@ -25,7 +25,7 @@
         <!-- Heading Dropdown -->
         <div class="dropdown">
             <button
-                class="btn btn-sm bg-gray-100 border-0 dropdown-toggle"
+                class="btn btn-sm btn-light border-0 dropdown-toggle"
                 type="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -81,7 +81,7 @@
         <button
             @click="editor.chain().focus().toggleBulletList().run()"
             :class="{ 'active bg-primary text-white': editor.isActive('bulletList') }"
-            class="btn btn-sm bg-gray-100 border-0"
+            class="btn btn-sm btn-light border-0"
             type="button"
             title="Bullet List"
         >
@@ -92,7 +92,7 @@
         <button
             @click="editor.chain().focus().toggleOrderedList().run()"
             :class="{ 'active bg-primary text-white': editor.isActive('orderedList') }"
-            class="btn btn-sm bg-gray-100 border-0"
+            class="btn btn-sm btn-light border-0"
             type="button"
             title="Ordered List"
         >
@@ -103,7 +103,7 @@
         <button
             @click="editor.chain().focus().toggleBold().run()"
             :class="{ 'active bg-primary text-white': editor.isActive('bold') }"
-            class="btn btn-sm bg-gray-100 border-0"
+            class="btn btn-sm btn-light border-0"
             type="button"
             title="Bold"
         >
@@ -114,7 +114,7 @@
         <button
             @click="editor.chain().focus().toggleItalic().run()"
             :class="{ 'active bg-primary text-white': editor.isActive('italic') }"
-            class="btn btn-sm bg-gray-100 border-0"
+            class="btn btn-sm btn-light border-0"
             type="button"
             title="Italic"
         >
@@ -125,7 +125,7 @@
         <button
             @click="editor.chain().focus().toggleStrike().run()"
             :class="{ 'active bg-primary text-white': editor.isActive('strike') }"
-            class="btn btn-sm bg-gray-100 border-0"
+            class="btn btn-sm btn-light border-0"
             type="button"
             title="Strikethrough"
         >
@@ -135,7 +135,7 @@
         <!-- Table -->
         <div class="dropdown">
             <button
-                class="btn btn-sm bg-gray-100 border-0 dropdown-toggle"
+                class="btn btn-sm btn-light border-0 dropdown-toggle"
                 type="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -155,7 +155,7 @@
                         Insert Table
                     </a>
                 </li>
-                <li><hr class="dropdown-divider border-gray-300" /></li>
+                <li><hr class="dropdown-divider border-secondary" /></li>
                 <li>
                     <a
                         class="dropdown-item"
@@ -186,7 +186,7 @@
                         Delete Column
                     </a>
                 </li>
-                <li><hr class="dropdown-divider border-gray-300" /></li>
+                <li><hr class="dropdown-divider border-secondary" /></li>
                 <li>
                     <a
                         class="dropdown-item"
@@ -217,7 +217,7 @@
                         Delete Row
                     </a>
                 </li>
-                <li><hr class="dropdown-divider border-gray-300" /></li>
+                <li><hr class="dropdown-divider border-secondary" /></li>
                 <li>
                     <a
                         class="dropdown-item"
@@ -235,7 +235,7 @@
         <button
             @click="editor.chain().focus().toggleUnderline().run()"
             :class="{ 'active bg-primary text-white': editor.isActive('underline') }"
-            class="btn btn-sm bg-gray-100 border-0"
+            class="btn btn-sm btn-light border-0"
             type="button"
             title="Underline"
         >
@@ -245,7 +245,7 @@
         <!-- Highlight Color -->
         <div class="dropdown">
             <button
-                class="btn btn-sm bg-gray-100 border-0"
+                class="btn btn-sm btn-light border-0"
                 :class="{ 'active bg-primary text-white': editor.isActive('highlight') }"
                 type="button"
                 data-bs-toggle="dropdown"
@@ -303,7 +303,7 @@
         <button
             @click="editor.chain().focus().setTextAlign('left').run()"
             :class="{ 'active bg-primary text-white': editor.isActive({ textAlign: 'left' }) }"
-            class="btn btn-sm bg-gray-100 border-0"
+            class="btn btn-sm btn-light border-0"
             type="button"
             title="Align Left"
         >
@@ -314,7 +314,7 @@
         <button
             @click="editor.chain().focus().setTextAlign('center').run()"
             :class="{ 'active bg-primary text-white': editor.isActive({ textAlign: 'center' }) }"
-            class="btn btn-sm bg-gray-100 border-0"
+            class="btn btn-sm btn-light border-0"
             type="button"
             title="Align Center"
         >
@@ -325,7 +325,7 @@
         <button
             @click="editor.chain().focus().setTextAlign('right').run()"
             :class="{ 'active bg-primary text-white': editor.isActive({ textAlign: 'right' }) }"
-            class="btn btn-sm bg-gray-100 border-0"
+            class="btn btn-sm btn-light border-0"
             type="button"
             title="Align Right"
         >
@@ -336,7 +336,7 @@
         <button
             @click="editor.chain().focus().setTextAlign('justify').run()"
             :class="{ 'active bg-primary text-white': editor.isActive({ textAlign: 'justify' }) }"
-            class="btn btn-sm bg-gray-100 border-0"
+            class="btn btn-sm btn-light border-0"
             type="button"
             title="Justify"
         >
@@ -346,7 +346,7 @@
         <!-- Clear Formatting -->
         <button
             @click="editor.chain().focus().unsetAllMarks().clearNodes().run()"
-            class="btn btn-sm bg-gray-100 border-0 text-danger"
+            class="btn btn-sm btn-light border-0 text-danger"
             type="button"
             title="Clear Formatting"
         >
@@ -370,15 +370,15 @@ const props = defineProps({
     cursor: not-allowed;
 }
 
-.tiptap-toolbar .bg-gray-100 {
+.tiptap-toolbar .btn-light {
     background-color: transparent;
 }
 
-.tiptap-toolbar .bg-gray-100:hover {
+.tiptap-toolbar .btn-light:hover {
     background-color: #e9ecef;
 }
 
-.tiptap-toolbar .bg-gray-100.active {
+.tiptap-toolbar .btn-light.active {
     background-color: #0d6efd !important;
     color: white !important;
 }

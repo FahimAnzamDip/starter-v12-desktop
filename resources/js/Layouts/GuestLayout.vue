@@ -1,12 +1,10 @@
-<script setup>
-import { Link } from '@inertiajs/vue3';
-</script>
+<script setup></script>
 
 <template>
-    <div class="position-fixed bg-primary bg-pattern-1 w-100 fmxh-400 z--1"></div>
+    <div class="position-fixed bg-primary bg-pattern-1 w-100 fmxh-400 z--1 theme-auth-pattern"></div>
     <!-- Main Content Start -->
     <main>
-        <slot/>
+        <slot />
     </main>
     <!-- Main Content End -->
 </template>

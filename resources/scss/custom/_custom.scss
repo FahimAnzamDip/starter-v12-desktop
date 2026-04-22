@@ -47,18 +47,18 @@ input[type='number'] {
 /* Track */
 ::-webkit-scrollbar-track {
     border-radius: 0.5rem;
-    background: #eee;
+    background: var(--app-scrollbar-track);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
     border-radius: 0.5rem;
-    background: #bbb;
+    background: var(--app-scrollbar-thumb);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #aaa;
+    background: var(--app-scrollbar-thumb-hover);
 }
 
 /* Vue Select Css Overwrite */
@@ -70,6 +70,20 @@ input[type='number'] {
     --dp-input-padding: 0.5rem 1rem;
     --dp-border-radius: 0.5rem;
     --dp-font-family: var(--bs-font-sans-serif);
+    /* Shared semantic tokens for light mode */
+    --app-scrollbar-track: #eee;
+    --app-scrollbar-thumb: #bbb;
+    --app-scrollbar-thumb-hover: #aaa;
+    --app-control-bg: #ffffff;
+    --app-control-border: #d1d5db;
+    --app-control-color: var(--bs-body-color);
+    --app-muted-color: #6b7280;
+    --app-placeholder-color: #9ca3af;
+    --app-surface-subtle: #f2f2f2;
+    --app-surface-elevated: #ebedef;
+    --app-table-head-bg: #f8f9fa;
+    --app-filepond-panel-bg: #ffffff;
+    --app-filepond-item-bg: #f8f9fa;
 }
 
 .vs__search {
@@ -84,12 +98,42 @@ input[type='number'] {
     appearance: none;
     display: flex;
     background: none;
-    border: 0.0625rem solid #d1d5db;
-    border-radius: 0.5rem;
+    border: 0.0625rem solid var(--app-control-border);
+    background: var(--app-control-bg);
     white-space: normal;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.07);
     padding: 0.35rem 1rem;
     font-size: 0.945rem;
+}
+
+[data-bs-theme='dark'] {
+    --app-scrollbar-track: #1f2937;
+    --app-scrollbar-thumb: #4b5563;
+    --app-scrollbar-thumb-hover: #6b7280;
+    --app-control-bg: #111827;
+    --app-control-border: #374151;
+    --app-control-color: #e5e7eb;
+    --app-muted-color: #9ca3af;
+    --app-placeholder-color: #9ca3af;
+    --app-surface-subtle: #1f2937;
+    --app-surface-elevated: #111827;
+    --app-table-head-bg: #1f2937;
+    --app-filepond-panel-bg: #111827;
+    --app-filepond-item-bg: #1f2937;
+}
+
+[data-bs-theme='dark'] {
+    .vs__dropdown-toggle {
+        border-color: var(--app-control-border);
+        background: var(--app-control-bg);
+    }
+
+    .vs__search,
+    .vs__selected,
+    .vs__dropdown-option {
+        color: var(--app-control-color);
+        background-color: var(--app-control-bg);
+    }
 }
 
 .vs__clear {
@@ -104,24 +148,24 @@ input[type='number'] {
     .show-text {
         font-size: 0.9rem;
         min-width: fit-content;
-    }
-    .show-select {
-        cursor: pointer;
         width: 100px;
     }
-}
 
-.cursor-pointer {
-    cursor: pointer !important;
+    select {
+        border: 0.0625rem solid var(--app-control-border);
+        border-color: var(--app-control-border);
+        background: var(--app-control-bg);
+        color: var(--app-control-color);
+    }
 }
 
 /* Datepicker plugin css overwrite */
 .dp__input {
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.07);
+    background-color: var(--app-surface-elevated);
 }
 
 .min-h-table {
-    min-height: 25rem;
+    background-color: var(--app-surface-elevated);
 }
 
 .font-100 {
@@ -151,6 +195,129 @@ input[type='number'] {
 .font-900 {
     font-weight: 900;
 } /* Black */
+
+.theme-pattern-surface {
+    background-color: var(--app-surface-elevated);
+}
+
+[data-bs-theme='dark'] .theme-pattern-surface {
+    background-color: var(--app-surface-elevated);
+}
+
+[data-bs-theme='dark'] .theme-auth-pattern {
+    filter: saturate(0.85) brightness(0.85);
+}
+
+[data-bs-theme='dark'] {
+    .card {
+        --bs-card-bg: var(--bs-body-bg);
+        --bs-card-border-color: var(--bs-border-color);
+    }
+
+    .table {
+        --bs-table-color: var(--bs-body-color);
+        --bs-table-bg: transparent;
+        --bs-table-border-color: var(--bs-border-color-translucent);
+        --bs-table-striped-bg: rgba(255, 255, 255, 0.04);
+        --bs-table-hover-bg: rgba(255, 255, 255, 0.08);
+    }
+
+    .table td,
+    .table th {
+        border-color: var(--bs-border-color-translucent);
+        color: var(--bs-body-color);
+    }
+
+    hr,
+    .border-bottom,
+    .border-top,
+    .border-gray-200 {
+        border-color: var(--bs-border-color-translucent) !important;
+    }
+
+    .table .thead-light th {
+        background-color: var(--app-table-head-bg);
+        color: var(--bs-body-color);
+    }
+
+    .table .thead-light th a {
+        color: var(--bs-body-color);
+    }
+
+    .modal-content,
+    .modal-header,
+    .modal-footer {
+        background-color: var(--bs-body-bg);
+        border-color: var(--bs-border-color);
+        color: var(--bs-body-color);
+    }
+
+    .modal-title,
+    .modal-body {
+        color: var(--bs-body-color);
+    }
+
+    .modal .btn-close {
+        filter: invert(1) grayscale(100%) brightness(200%);
+    }
+
+    .form-control,
+    .form-select,
+    .input-group-text {
+        background-color: var(--bs-body-bg);
+        border-color: var(--bs-border-color);
+        color: var(--bs-body-color);
+    }
+
+    .form-control::placeholder {
+        color: var(--app-placeholder-color);
+    }
+
+    .choices__inner,
+    .choices__input,
+    .choices__list--dropdown,
+    .choices__list[aria-expanded],
+    .choices[data-type*='select-one'] .choices__input {
+        background-color: var(--app-control-bg);
+        border-color: var(--app-control-border);
+        color: var(--app-control-color);
+    }
+
+    .choices[data-type*='select-one']::after {
+        border-color: var(--app-placeholder-color) transparent transparent;
+    }
+
+    .choices[data-type*='select-one'].is-open::after {
+        border-color: transparent transparent var(--app-placeholder-color);
+    }
+
+    .choices__list--dropdown .choices__item--selectable.is-highlighted,
+    .choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
+        background-color: var(--app-surface-subtle);
+    }
+
+    .filepond--root .filepond--drop-label,
+    .filepond--root .filepond--panel-root,
+    .filepond--root .filepond--file,
+    .filepond--root .filepond--file-info-main,
+    .filepond--root .filepond--file-info-sub,
+    .filepond--root .filepond--label-action {
+        color: var(--app-control-color);
+    }
+
+    .filepond--root .filepond--panel-root {
+        background-color: var(--app-filepond-panel-bg);
+        border: 1px dashed var(--app-control-border);
+    }
+
+    .filepond--root .filepond--item-panel {
+        background-color: var(--app-filepond-item-bg);
+    }
+
+    .breadcrumb.bg-white {
+        background-color: var(--bs-body-bg) !important;
+    }
+}
 
 /* Pattern 1 */
 .pattern-1 {

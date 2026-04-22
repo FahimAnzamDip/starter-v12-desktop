@@ -32,8 +32,8 @@ const toggleRole = () => {
 </script>
 
 <template>
-    <div class="card border-0 shadow h-100 bg-gray-50">
-        <div class="card-header bg-light border-bottom py-2">
+    <div class="card border-0 shadow h-100 theme-pattern-surface">
+        <div class="card-header border-bottom py-2">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center">
                     <i class="ri-user-settings-line fs-5 me-2 text-primary"></i>
