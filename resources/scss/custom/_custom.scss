@@ -106,6 +106,18 @@ input[type='number'] {
     font-size: 0.945rem;
 }
 
+/* VueDatePicker: match border radius & font to Bootstrap */
+.dp__theme_light {
+    --dp-border-color: var(--app-control-border);
+    --dp-menu-border-color: var(--app-control-border);
+    --dp-background-color: var(--app-control-bg);
+    --dp-text-color: var(--bs-body-color);
+    --dp-border-color-hover: var(--bs-primary);
+    --dp-primary-color: var(--bs-primary);
+    --dp-primary-text-color: #fff;
+    --dp-icon-color: var(--app-muted-color);
+}
+
 [data-bs-theme='dark'] {
     --app-scrollbar-track: #1f2937;
     --app-scrollbar-thumb: #4b5563;
@@ -123,16 +135,136 @@ input[type='number'] {
 }
 
 [data-bs-theme='dark'] {
+    /* ── vue-select ── */
+    --vs-dropdown-bg: var(--app-surface-elevated);
+    --vs-dropdown-color: var(--app-control-color);
+    --vs-dropdown-option-color: var(--app-control-color);
+    --vs-selected-bg: var(--app-surface-subtle);
+    --vs-selected-color: var(--app-control-color);
+    --vs-selected-border-color: var(--app-control-border);
+    --vs-search-input-color: var(--app-control-color);
+    --vs-search-input-placeholder-color: var(--app-placeholder-color);
+    --vs-border-color: var(--app-control-border);
+    --vs-controls-color: var(--app-muted-color);
+    --vs-state-disabled-bg: var(--app-surface-subtle);
+    --vs-state-disabled-color: var(--app-muted-color);
+
     .vs__dropdown-toggle {
         border-color: var(--app-control-border);
         background: var(--app-control-bg);
     }
 
     .vs__search,
-    .vs__selected,
+    .vs__selected {
+        color: var(--app-control-color);
+    }
+
+    .vs__selected {
+        background-color: var(--app-surface-subtle);
+        border-color: var(--app-control-border);
+    }
+
+    .vs__dropdown-menu {
+        background: var(--app-surface-elevated);
+        border-color: var(--app-control-border);
+    }
+
     .vs__dropdown-option {
         color: var(--app-control-color);
+    }
+
+    .vs__dropdown-option--highlight {
+        background: var(--bs-primary);
+        color: #fff;
+    }
+
+    .vs__dropdown-option--disabled {
+        background: var(--app-surface-subtle);
+        color: var(--app-muted-color);
+    }
+
+    .vs__no-options {
+        color: var(--app-muted-color);
+    }
+
+    /* ── VueDatePicker ── */
+    .dp__theme_light,
+    .dp__theme_dark {
+        --dp-background-color: var(--app-surface-elevated);
+        --dp-text-color: var(--app-control-color);
+        --dp-hover-color: var(--app-surface-subtle);
+        --dp-hover-text-color: var(--app-control-color);
+        --dp-hover-icon-color: var(--app-muted-color);
+        --dp-primary-color: var(--bs-primary);
+        --dp-primary-text-color: #fff;
+        --dp-secondary-color: var(--app-muted-color);
+        --dp-border-color: var(--app-control-border);
+        --dp-menu-border-color: var(--app-control-border);
+        --dp-border-color-hover: var(--bs-primary);
+        --dp-disabled-color: var(--app-surface-subtle);
+        --dp-disabled-color-text: var(--app-muted-color);
+        --dp-scroll-bar-background: var(--app-surface-subtle);
+        --dp-scroll-bar-color: var(--app-control-border);
+        --dp-icon-color: var(--app-muted-color);
+        --dp-tooltip-color: var(--app-surface-subtle);
+        --dp-highlight-color: rgba(99, 102, 241, 0.15);
+        --dp-range-between-dates-background-color: var(--app-surface-subtle);
+        --dp-range-between-dates-text-color: var(--app-control-color);
+        --dp-range-between-border-color: var(--app-surface-subtle);
+    }
+
+    /* Datepicker input box in dark mode */
+    .dp__input {
         background-color: var(--app-control-bg);
+        border-color: var(--app-control-border);
+        color: var(--app-control-color);
+    }
+
+    .dp__input::placeholder {
+        color: var(--app-placeholder-color);
+    }
+
+    .dp__input_icon {
+        color: var(--app-muted-color);
+    }
+
+    /* ── SweetAlert2 ── */
+    .swal2-popup {
+        background: var(--app-surface-elevated);
+        color: var(--app-control-color);
+    }
+
+    .swal2-title,
+    .swal2-html-container {
+        color: var(--app-control-color);
+    }
+
+    .swal2-input,
+    .swal2-textarea,
+    .swal2-select,
+    .swal2-file {
+        background: var(--app-control-bg);
+        border-color: var(--app-control-border);
+        color: var(--app-control-color);
+    }
+
+    .swal2-footer {
+        border-top-color: var(--app-control-border);
+        color: var(--app-muted-color);
+    }
+
+    .swal2-close {
+        color: var(--app-muted-color);
+    }
+
+    .swal2-close:hover {
+        color: var(--app-control-color);
+    }
+
+    /* Toast variant: inherits swal2-popup so same rules apply */
+    .swal2-container .swal2-toast {
+        background: var(--app-surface-elevated);
+        color: var(--app-control-color);
     }
 }
 
@@ -165,7 +297,7 @@ input[type='number'] {
 }
 
 .min-h-table {
-    background-color: var(--app-surface-elevated);
+    background-color: transparent;
 }
 
 .font-100 {
@@ -316,6 +448,34 @@ input[type='number'] {
 
     .breadcrumb.bg-white {
         background-color: var(--bs-body-bg) !important;
+    }
+
+    /* Dropdowns */
+    .dropdown-menu {
+        --bs-dropdown-bg: var(--app-surface-elevated);
+        --bs-dropdown-border-color: var(--app-control-border);
+        --bs-dropdown-color: var(--bs-body-color);
+        --bs-dropdown-link-color: var(--bs-body-color);
+        --bs-dropdown-link-hover-bg: var(--app-surface-subtle);
+        --bs-dropdown-link-hover-color: var(--bs-body-color);
+        --bs-dropdown-link-active-bg: var(--bs-primary);
+        --bs-dropdown-divider-bg: var(--app-control-border);
+        --bs-dropdown-header-color: var(--app-muted-color);
+    }
+
+    /* Pagination */
+    .pagination {
+        --bs-pagination-bg: var(--app-surface-elevated);
+        --bs-pagination-border-color: var(--app-control-border);
+        --bs-pagination-color: var(--bs-body-color);
+        --bs-pagination-hover-bg: var(--app-surface-subtle);
+        --bs-pagination-hover-border-color: var(--app-control-border);
+        --bs-pagination-hover-color: var(--bs-body-color);
+        --bs-pagination-focus-bg: var(--app-surface-subtle);
+        --bs-pagination-focus-color: var(--bs-body-color);
+        --bs-pagination-disabled-bg: var(--app-surface-elevated);
+        --bs-pagination-disabled-border-color: var(--app-control-border);
+        --bs-pagination-disabled-color: var(--app-muted-color);
     }
 }
 

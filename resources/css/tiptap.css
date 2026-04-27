@@ -229,3 +229,58 @@
     background-color: #adf;
     pointer-events: none;
 }
+
+/* ── TipTap Dark Mode ── */
+[data-bs-theme='dark'] .tiptap-editor-wrapper {
+    border-color: var(--app-control-border);
+}
+
+[data-bs-theme='dark'] .tiptap-toolbar {
+    background-color: var(--app-surface-subtle) !important;
+    border-color: var(--app-control-border) !important;
+}
+
+[data-bs-theme='dark'] .tiptap-toolbar .btn-light {
+    background-color: var(--app-surface-subtle);
+    border-color: var(--app-control-border);
+    color: var(--app-control-color);
+}
+
+[data-bs-theme='dark'] .tiptap-toolbar .btn-light:hover,
+[data-bs-theme='dark'] .tiptap-toolbar .btn-light.active {
+    background-color: var(--app-control-border);
+    color: var(--app-control-color);
+}
+
+[data-bs-theme='dark'] .tiptap {
+    color: var(--app-control-color);
+    caret-color: var(--app-control-color);
+}
+
+[data-bs-theme='dark'] .tiptap a {
+    color: #818cf8;
+}
+
+[data-bs-theme='dark'] .tiptap code {
+    background-color: var(--app-surface-subtle);
+    color: #f472b6;
+}
+
+[data-bs-theme='dark'] .tiptap blockquote {
+    border-left-color: var(--app-control-border);
+    color: var(--app-muted-color);
+}
+
+[data-bs-theme='dark'] .tiptap table th {
+    background-color: var(--app-surface-subtle);
+    color: var(--app-control-color);
+    border-color: var(--app-control-border);
+}
+
+[data-bs-theme='dark'] .tiptap table td {
+    border-color: var(--app-control-border);
+}
+
+[data-bs-theme='dark'] .tiptap .selectedCell::after {
+    background: rgba(99, 102, 241, 0.2);
+}
